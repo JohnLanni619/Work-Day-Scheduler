@@ -3,9 +3,6 @@ document.getElementById("currentDay").innerHTML = rightNow
 var now = moment()
 var currentHour = now.get('hour');
 
-console.log(currentHour);
-console.log(rightNow);
-
 // Updating hours relative to current hour 
 if (9 < currentHour) {
     $( "#9am" ).removeClass( "present future" ).addClass("past");
@@ -86,9 +83,6 @@ var saveTasks = function(event) {
     var userText = $(event.target).siblings("textarea").val();
 
     localStorage.setItem(userInfo, userText);
-    
-    console.log(userInfo);
-    console.log(userText);
 }
 
 $(".saveBtn").on("click", saveTasks);

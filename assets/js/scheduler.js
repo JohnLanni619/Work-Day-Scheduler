@@ -1,4 +1,5 @@
 var rightNow = moment().format('MMMM Do, YYYY');
+document.getElementById("currentDay").innerHTML = rightNow
 var now = moment()
 var currentHour = now.get('hour');
 
@@ -78,5 +79,29 @@ if (17 < currentHour) {
     $( "#5pm" ).removeClass( "present past" ).addClass( "future" );
 }
 
+// Create function for saving textarea data in local storage when clicking the save button 
+var saveTasks = function(event) {
+    var userInfo = $(event.target).siblings("textarea").attr("id");
 
-document.getElementById("currentDay").innerHTML = rightNow
+    var userText = $(event.target).siblings("textarea").val();
+
+    localStorage.setItem(userInfo, userText);
+    
+    console.log(userInfo);
+    console.log(userText);
+}
+
+$(".saveBtn").on("click", saveTasks);
+
+function getStorage() {
+    $("#9am").text(localStorage.getItem("9am"));
+    $("#10am").text(localStorage.getItem("10am"));
+    $("#11am").text(localStorage.getItem("11am"));
+    $("#12pm").text(localStorage.getItem("12pm"));
+    $("#1pm").text(localStorage.getItem("1pm"));
+    $("#2pm").text(localStorage.getItem("2pm"));
+    $("#3pm").text(localStorage.getItem("3pm"));
+    $("#4pm").text(localStorage.getItem("4pm"));
+    $("#5pm").text(localStorage.getItem("5pm"));
+  }
+  getStorage();
